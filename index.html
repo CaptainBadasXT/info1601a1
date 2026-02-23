@@ -1,13 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFO 1601 - Assignment 1</title>
-    <style>
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KJ TechMart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fafafa;
+      color: #222222;
+      line-height: 1.5;
+    }
+
+    #main-container,
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333333;
+      padding: 15px 30px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 15px;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .hero {
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+      text-align: center;
+      border-radius: 12px;
+      margin: 20px 0;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      margin: 0 0 12px;
+      font-size: 32px;
+    }
+
+    .hero-content p {
+      margin: 0 0 20px;
+      color: #555555;
+      font-size: 16px;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      font-family: inherit;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 12px 24px;
+      border-radius: 8px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: #007bff;
+    }
+
+    .btn-primary:hover {
+      background: #0069d9;
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .flex-item {
+      flex: 1 1 300px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      height: 100%;
+    }
+
+    .card-header {
+      font-family: "Roboto", Arial, sans-serif;
+      color: #000000;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .card-body {
+      color: #555555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .card img {
+      max-width: 100%;
+      display: block;
+      border-radius: 15px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    .badge-success {
+      background-color: #28a745;
+    }
+
+    .badge-danger {
+      background-color: #dc3545;
+    }
+
+    figure {
+      width: 30vw;
+      border: 1px solid #cccccc;
+      margin: 20px auto;
+      background: #ffffff;
+    }
+
+    figure img {
+      max-width: 100%;
+      display: block;
+    }
+
+    figcaption {
+      text-align: center;
+      color: #555555;
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    details {
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: #ffffff;
+    }
+
+    summary {
+      font-weight: 700;
+      cursor: pointer;
+      padding: 12px;
+      font-size: 16px;
+    }
+
+    details p {
+      margin: 8px 12px 0;
+      color: #444444;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ffffff;
+      margin: 20px 0;
+    }
+
+    th {
+      background: #333333;
+      color: #ffffff;
+      padding: 12px;
+      text-align: left;
+    }
+
+    td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f5f5f5;
+    }
+
+    form {
+      max-width: 600px;
+      padding: 20px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    label {
+      display: block;
+      width: 100%;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333333;
+    }
+
+    form input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #cccccc;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-bottom: 16px;
+      background: #ffffff;
+    }
+
+    button[popovertarget] {
+      cursor: pointer;
+    }
+
+    dialog[popover] {
+      background: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      max-width: 420px;
+    }
+
+    dialog[popover] h3 {
+      margin: 0 0 10px;
+    }
+
+    dialog[popover] p {
+      margin: 0 0 16px;
+      color: #444444;
+    }
+
+    footer {
+      background: #222222;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      padding: 30px 0;
+      border-radius: 8px;
+    }
+
+    .section-title {
+      margin: 24px 0 10px;
+      font-size: 20px;
+    }
+
+    .section-subtitle {
+      margin: 0 0 10px;
+      color: #555555;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-   <h1>INFO 1601 - Assignment 1</h1>
+  <div id="main-container" class="container">
+    <nav>
+      <a href="#" class="brand">KJ TechMart</a>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Deals</a>
+        <a href="#">Cart</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Upgrade Your Setup with KJ TechMart</h1>
+        <p>Affordable tech accessories for UWI students, gamers, and creators.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" type="button">Shop Now</button>
+          <button class="btn-secondary" type="button">View Deals</button>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Popular Accessories</h2>
+    <p class="section-subtitle">Top picks for students, coders, and gamers.</p>
+
+    <section class="flex-container">
+      <div class="flex-item">
+        <article class="card">
+          <div class="card-header">Study Mouse Pro</div>
+          <div class="card-body">
+            Smooth tracking, silent clicks, and long battery life. Perfect for classes and late-night study sessions.
+            <br>
+            <span class="badge badge-success">New</span>
+            <span class="badge badge-danger">Sale</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="flex-item">
+        <article class="card">
+          <img src="https://picsum.photos/800/420?random=21" alt="Mechanical keyboard product image">
+          <div class="card-header">CodeBoard 75</div>
+          <div class="card-body">
+            Tactile keys, RGB backlight, and compact design for a clean desk setup. Great for coding and gaming.
+          </div>
+        </article>
+      </div>
+
+      <div class="flex-item">
+        <article class="card">
+          <div class="card-header">Campus USB-C Hub</div>
+          <div class="card-body">
+            Expand your laptop with HDMI, USB, and SD card ports. A must-have for students and creators.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <h2 class="section-title">Featured Collection</h2>
+    <figure>
+      <img src="https://picsum.photos/700/380?random=22" alt="Tech accessories collection">
+      <figcaption>KJ TechMart Best Sellers Collection</figcaption>
+    </figure>
+
+    <h2 class="section-title">FAQs</h2>
+
+    <details>
+      <summary>Do you deliver in Trinidad and Tobago?</summary>
+      <p>Yes, we deliver across Trinidad and Tobago. Delivery times may vary by location.</p>
+    </details>
+
+    <details>
+      <summary>Can I return a defective item?</summary>
+      <p>Yes. Defective items can be returned within 7 days with proof of purchase.</p>
+    </details>
+
+    <details>
+      <summary>Do your accessories come with warranty?</summary>
+      <p>Most products include a limited warranty. Please check the item details before purchase.</p>
+    </details>
+
+    <h2 class="section-title">Price List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price (TT$)</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Study Mouse Pro</td>
+          <td>25</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>CodeBoard 75</td>
+          <td>65</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>Campus USB-C Hub</td>
+          <td>40</td>
+          <td>Low Stock</td>
+        </tr>
+        <tr>
+          <td>Focus Headphones</td>
+          <td>80</td>
+          <td>Out of Stock</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">Order Inquiry</h2>
+    <form>
+      <label for="fullName">Full Name</label>
+      <input id="fullName" type="text" placeholder="Enter your name">
+
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="you@example.com">
+
+      <label for="phone">Phone Number</label>
+      <input id="phone" type="text" placeholder="868-000-0000">
+
+      <label for="product">Product Interested In</label>
+      <input id="product" type="text" placeholder="e.g. CodeBoard 75">
+
+      <button class="btn-primary" type="submit">Send Inquiry</button>
+    </form>
+
+    <h2 class="section-title">Promo</h2>
+    <button class="btn-secondary" type="button" popovertarget="promoDialog">Quick Promo</button>
+
+    <dialog id="promoDialog" popover>
+      <h3>Special Offer</h3>
+      <p>Get <strong>10% off</strong> your first order with code <strong>TECH10</strong>.</p>
+      <button class="btn-primary" type="button" popovertarget="promoDialog" popovertargetaction="hide">Close</button>
+    </dialog>
+
+    <footer>
+      &copy; 2026 KJ TechMart. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>
